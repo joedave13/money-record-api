@@ -35,6 +35,7 @@ if ($result_check->num_rows > 0) {
         ], JSON_PRETTY_PRINT);
     } else {
         header('Content-type: application/json');
+        http_response_code(500);
         echo json_encode([
             'success' => false,
             'message' => 'Something went wrong.'

@@ -31,6 +31,7 @@ if ($email_result->num_rows > 0) {
         ], JSON_PRETTY_PRINT);
     } else {
         header('Content-type: application/json');
+        http_response_code(422);
         echo json_encode([
             'success' => false,
             'message' => 'Wrong password!'
@@ -38,6 +39,7 @@ if ($email_result->num_rows > 0) {
     }
 } else {
     header('Content-type: application/json');
+    http_response_code(404);
     echo json_encode([
         'success' => false,
         'message' => 'Email is not registered!'

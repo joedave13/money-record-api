@@ -17,6 +17,7 @@ $result_check = $connect->query($sql_check);
 
 if ($result_check->num_rows > 0) {
     header('Content-type: application/json');
+    http_response_code(409);
     echo json_encode([
         'success' => false,
         'message' => 'Email is already exist!'
@@ -27,12 +28,14 @@ if ($result_check->num_rows > 0) {
 
     if ($register) {
         header('Content-type: application/json');
+        http_response_code(201);
         echo json_encode([
             'success' => true,
             'message' => 'Register success.'
         ], JSON_PRETTY_PRINT);
     } else {
         header('Content-type: application/json');
+        http_response_code(500);
         echo json_encode([
             'success' => false,
             'message' => 'Something went wrong.'
