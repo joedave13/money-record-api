@@ -16,7 +16,7 @@ if ($email_result->num_rows > 0) {
 
     if (password_verify($_POST['password'], $user['password'])) {
         $data = [
-            'id' => $user['id'],
+            'id' => (int) $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
             'created_at' => $user['created_at'],
