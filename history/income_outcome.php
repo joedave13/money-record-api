@@ -11,7 +11,14 @@ if ($result->num_rows > 0) {
     $data = [];
 
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $data[] = [
+            'id' => intval($row['id']),
+            'date' => $row['date'],
+            'total' => $row['total'],
+            'type' => $row['type'],
+            'created_at' => $row['created_at'],
+            'updated_at' => $row['updated_at']
+        ];
     }
 
     header('Content-Type: application/json');
